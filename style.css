@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --neon-pink: #ff007f;
+    --neon-blue: #00ffff;
+    --neon-white: #ffffff; /* Added for the 'Own' text */
+    --dark-bg: #0a0a0a;
+    --light-gray: #f0f0f0;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--dark-bg);
+    color: var(--light-gray);
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.assistant-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.7), 0 0 20px rgba(0, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7); /* Adjusted for white glow */
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.neon-text-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink);
+}
+
+.neon-text-blue {
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px var(--neon-blue), 0 0 15px var(--neon-blue);
+}
+
+.neon-text-white { /* New class for the 'Own' text */
+    color: var(--neon-white);
+    text-shadow: 0 0 8px var(--neon-white), 0 0 15px var(--neon-white);
+}
+
+.message-display {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5em;
+    color: var(--light-gray);
+    margin-bottom: 50px;
+    min-height: 30px; /* To prevent layout shift when message appears */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.message-display.show {
+    opacity: 1;
+}
+
+.talk-button {
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    color: var(--dark-bg); /* Dark text on bright button */
+    border: none;
+    border-radius: 50px;
+    padding: 20px 40px;
+    font-size: 1.8em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 25px rgba(255, 0, 127, 0.7);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.talk-button:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.9), 0 0 35px rgba(255, 0, 127, 0.9);
+    transform: scale(1.02);
+}
+
+.talk-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 127, 0.5);
+}
+
+.talk-button i {
+    margin-right: 15px;
+}
+
+/* Visualizer Styling */
+.visualizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Bars grow upwards */
+    height: 60px;
+    width: 200px;
+    margin-top: 40px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.visualizer.active {
+    opacity: 1;
+}
+
+.visualizer .bar {
+    width: 8px;
+    height: 5px; /* Starting height */
+    background-color: var(--neon-blue);
+    margin: 0 3px;
+    border-radius: 2px;
+    animation: pulse 0.8s infinite alternate ease-in-out;
+    box-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-pink);
+}
+
+/* Delay for each bar to create a wave effect */
+.visualizer .bar:nth-child(2) { animation-delay: 0.1s; }
+.visualizer .bar:nth-child(3) { animation-delay: 0.2s; }
+.visualizer .bar:nth-child(4) { animation-delay: 0.3s; }
+.visualizer .bar:nth-child(5) { animation-delay: 0.4s; }
+.visualizer .bar:nth-child(6) { animation-delay: 0.3s; }
+.visualizer .bar:nth-child(7) { animation-delay: 0.2s; }
+.visualizer .bar:nth-child(8) { animation-delay: 0.1s; }
+
+@keyframes pulse {
+    0% { height: 5px; background-color: var(--neon-blue); }
+    50% { height: 50px; background-color: var(--neon-pink); }
+    100% { height: 5px; background-color: var(--neon-blue); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2em;
+    }
+    .message-display {
+        font-size: 1.2em;
+    }
+    .talk-button {
+        padding: 15px 30px;
+        font-size: 1.5em;
+    }
+    .visualizer {
+        height: 40px;
+        width: 150px;
+    }
+    .visualizer .bar {
+        width: 6px;
+    }
+    @keyframes pulse {
+        0% { height: 3px; }
+        50% { height: 30px; }
+        100% { height: 3px; }
+    }
+}
+.assistant-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fills the circle without distortion */
+    border: 3px solid var(--neon-blue);
+    box-shadow:
+        0 0 10px var(--neon-blue),
+        0 0 20px var(--neon-pink),
+        0 0 30px var(--neon-pink);
+    margin-bottom: 20px;
+}
