@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Own Virtual Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="assistant-container">
+        <img src="logo.png" alt="A stylish virtual assistant icon" class="assistant-icon">
+        <h1 class="main-title">
+            I'm <span class="neon-text-pink">Your</span><span class="neon-text-white">,Own</span> <span class="neon-text-blue">Virtual Assistant</span>
+        </h1>
+
+        <div class="message-display" id="message-display">
+            <!-- Dynamic messages like "Listening...", "Processing...", "Hello!" -->
+        </div>
+
+        <button id="talk-button" class="talk-button">
+            <i class="fas fa-microphone"></i> Click to Talk
+        </button>
+
+        <div class="visualizer" id="visualizer">
+            <!-- Dynamic visualizer for audio input -->
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <!-- Font Awesome for microphone icon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
